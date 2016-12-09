@@ -27,23 +27,27 @@ function draw() {
 function Cell(i, j) {
   this.i = i;
   this.j = j;
-  //             T     R     B     L
-  this.walls = [true, true, true, true];
+
+  this.walls = []
+  this.walls['top'] = true
+  this.walls['right'] = true
+  this.walls['bottom'] = true
+  this.walls['left'] = true
 
   this.show = function() {
     var x = this.i*w;
     var y = this.j*w;
     stroke(255);
-    if (this.walls[0]) {
+    if (this.walls['top']) {
       line(x,     y,     x + w, y    ); // Top
     }
-    if (this.walls[1]) {
+    if (this.walls['right']) {
       line(x + w, y,     x + w, y + w); // Right
     }
-    if (this.walls[2]) {
+    if (this.walls['bottom']) {
       line(x,     y + w, x + w, y + w); // Bottom
     }
-    if (this.walls[3]) {
+    if (this.walls['left']) {
       line(x,     y,     x,     y + w); // Left
     }
     // noFill();
