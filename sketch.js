@@ -28,13 +28,13 @@ function draw() {
   }
 
   current.visited = true;
-  current.checkNeighbors();
+  var next = current.checkNeighbors();
 
 }
 
 function index(i, j) {
-  if (i<0 || j<0 || i > cols-1 || j > rows-1) {
-    return -1;
+  if ( i < 0 || j < 0 || i > cols-1 || j > rows-1 ) {
+    //return -1;
   }
   return i + j * cols;
 }
@@ -69,6 +69,14 @@ function Cell(i, j) {
     }
     if(left && !left.visited) {
       neighbors.push(left);
+    }
+
+    if(neighbors.length > 0) {
+      var r = floor(random(0, neighbors.length));
+      return neighbors[r]
+    }
+    else {
+      return undefined;
     }
 
   }
