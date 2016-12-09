@@ -29,9 +29,16 @@ function draw() {
   }
 
   current.visited = true;
+
+  // STEP 1
   var next = current.checkNeighbors();
   if (next) {
     next.visited = true;
+
+    // STEP 3
+    removeWalls(current, next);
+
+    // STEP 4
     current = next;
   }
 
@@ -89,6 +96,13 @@ function Cell(i, j) {
   this.show = function() {
     var x = this.i*w;
     var y = this.j*w;
+
+    if (this.visited) {
+      noStroke()
+      fill(128, 0, 128);
+      rect(x,y,w,w);
+    }
+
     stroke(255);
     if (this.walls['top']) {
       line(x,     y,     x + w, y    ); // Top
@@ -103,10 +117,28 @@ function Cell(i, j) {
       line(x,     y,     x,     y + w); // Left
     }
 
-    if (this.visited) {
-      fill(128, 0, 128);
-      rect(x,y,w,w);
-    }
+  }
+}
 
+function removeWalls(a, b) {
+
+  var dx = a.i - b.i;
+  if (dx == 1) {
+    a.walls['left'] = false;
+    b.walls['right'] = false;
+  }
+  else if (dx == -1) {
+    a.walls['right'] = false;
+    b.walls['left'] = false;
+  }
+
+  var dy = a.j - b.j;
+  if (dy == 1) {
+    a.walls['top'] = false;
+    b.walls['bottom'] = false;
+  }
+  else if (dy == -1) {
+    a.walls['bottom'] = false;
+    b.walls['top'] = false;
   }
 }
