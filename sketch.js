@@ -11,7 +11,7 @@ function setup() {
   createCanvas(600, 600);
   cols = floor(width/w);
   rows = floor(height/w);
-  //frameRate(5);
+  frameRate(10);
 
   for(var j = 0; j < rows; j++) {
     for(var i = 0; i < rows; i++) {
