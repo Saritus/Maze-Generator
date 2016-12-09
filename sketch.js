@@ -32,7 +32,11 @@ function Cell(i, j) {
     var x = this.i*w;
     var y = this.j*w;
     stroke(255);
-    noFill();
-    rect(x,y,w,w);
+    line(x,     y,     x + w, y    ); // Top
+    line(x + w, y,     x + w, y + w); // Right
+    line(x,     y + w, x + w, y + w); // Bottom
+    line(x,     y,     x,     y + w); // Left
+    // noFill();
+    // rect(x,y,w,w);
   }
 }
