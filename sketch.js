@@ -1,17 +1,17 @@
 // https://www.youtube.com/watch?v=HyK_Q5rrcr4
 
 var cols, rows;
-var w = 40;
+var w = 20;
 var grid = [];
 var current;
 
 var stack = [];
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(600, 600);
   cols = floor(width/w);
   rows = floor(height/w);
-  frameRate(5);
+  //frameRate(5);
 
   for(var j = 0; j < rows; j++) {
     for(var i = 0; i < rows; i++) {
