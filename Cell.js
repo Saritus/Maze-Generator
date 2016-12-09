@@ -37,7 +37,6 @@ function Cell(i, j) {
     else {
       return undefined;
     }
-
   }
 
   this.highlight = function() {
@@ -72,6 +71,5 @@ function Cell(i, j) {
     if (this.walls['left']) {
       line(x,     y,     x,     y + w); // Left
     }
-
   }
 }
