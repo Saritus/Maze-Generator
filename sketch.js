@@ -29,6 +29,7 @@ function draw() {
   }
 
   current.visited = true;
+  current.highlight();
 
   // STEP 1
   var next = current.checkNeighbors();
@@ -93,13 +94,22 @@ function Cell(i, j) {
 
   }
 
+  this.highlight = function() {
+    var x = this.i*w;
+    var y = this.j*w;
+
+    noStroke()
+    fill(0, 255, 0, 100);
+    rect(x,y,w,w);
+  }
+
   this.show = function() {
     var x = this.i*w;
     var y = this.j*w;
 
     if (this.visited) {
       noStroke()
-      fill(128, 0, 128);
+      fill(255, 0, 255, 100);
       rect(x,y,w,w);
     }
 
