@@ -5,6 +5,8 @@ var w = 40;
 var grid = [];
 var current;
 
+var stack = [];
+
 function setup() {
   createCanvas(400, 400);
   cols = floor(width/w);
@@ -36,11 +38,17 @@ function draw() {
   if (next) {
     next.visited = true;
 
+    // STEP 2
+    stack.push(current);
+
     // STEP 3
     removeWalls(current, next);
 
     // STEP 4
     current = next;
+  }
+  else if (stack.length > 0) {
+    current = stack.pop();
   }
 
 }
