@@ -9,6 +9,7 @@ function setup() {
   createCanvas(400, 400);
   cols = floor(width/w);
   rows = floor(height/w);
+  frameRate(5);
 
   for(var j = 0; j < rows; j++) {
     for(var i = 0; i < rows; i++) {
@@ -29,12 +30,16 @@ function draw() {
 
   current.visited = true;
   var next = current.checkNeighbors();
+  if (next) {
+    next.visited = true;
+    current = next;
+  }
 
 }
 
 function index(i, j) {
   if ( i < 0 || j < 0 || i > cols-1 || j > rows-1 ) {
-    //return -1;
+    return -1;
   }
   return i + j * cols;
 }
